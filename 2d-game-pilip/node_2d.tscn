@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://b4rr0df5g43x6"]
+
+[ext_resource type="Texture2D" uid="uid://dsdylhgk8vxqb" path="res://pilip.png" id="2_epypp"]
+[ext_resource type="Script" uid="uid://cjg1w1hwh2kbe" path="res://pilip.gd" id="3_epypp"]
+[ext_resource type="Script" uid="uid://db6gex72ceq2j" path="res://animated_sprite_2d.gd" id="3_q6r6c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vtw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_epypp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsrjx"]
+size = Vector2(10, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nsrjx"]
+
+[sub_resource type="Gradient" id="Gradient_kdubu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.09803922, 0.61960787, 0.0627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qe6ef"]
+gradient = SubResource("Gradient_kdubu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vtw2"]
+size = Vector2(236.5, 239.75609)
+
+[node name="Node2D" type="Node2D" unique_id=670189421]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1174715466]
+position = Vector2(-7, -26)
+script = ExtResource("3_q6r6c")
+
+[node name="Pilip" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=198068036]
+position = Vector2(0, 0.2)
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_6vtw2")
+script = ExtResource("3_epypp")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=990553600]
+scale = Vector2(0.99999994, 0.99999994)
+zoom = Vector2(8.5, 8.5)
+position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=832776339]
+position = Vector2(4.7683716e-07, 1.9073486e-06)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_nsrjx")
+debug_color = Color(0.21231672, 0.51178837, 1, 0.41960785)
+
+[node name="ground1" type="Area2D" parent="." unique_id=56280730]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground1" unique_id=1033726380]
+position = Vector2(0, 3)
+scale = Vector2(237.00002, 38.828)
+mesh = SubResource("BoxMesh_nsrjx")
+texture = SubResource("GradientTexture1D_qe6ef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground1" unique_id=569648056]
+position = Vector2(-0.25, 2.3400002)
+scale = Vector2(1, 0.164)
+shape = SubResource("RectangleShape2D_6vtw2")
+debug_color = Color(1.92523e-07, 0.85991126, 0.3561391, 0.41960785)
